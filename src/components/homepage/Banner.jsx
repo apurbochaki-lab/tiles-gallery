@@ -1,8 +1,11 @@
+import { TilesData } from "@/lib/dataFetch";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 
-const Banner = () => {
+const Banner = async () => {
+    const tiles = await TilesData()
+
     return (
         <section className="max-w-7xl mx-auto">
             {/* Banner */}
@@ -19,9 +22,13 @@ const Banner = () => {
             </div>
 
             {/* Marquee */}
-            <div className="mt-10 border border-blue-500/30 shadow-md bg-[#E8BD81]/25 p-5 rounded-lg">
+            <div className="mt-10 m-5 border border-blue-500/30 shadow-md bg-[#E8BD81]/25 p-5 rounded-lg">
                 <Marquee pauseOnHover="true" speed={100} className="font-normal text-xl font-semibold">
-                    I can be a React component, multiple React components, or just some text.
+                    {
+                        tiles.map((tile, ind) => <span key={ind} className="mr-15">
+                            New Arrivals: {tile.title} | Weekly Feature: Modern Geometric Patterns | Join the Community...
+                        </span>)
+                    }
                 </Marquee>
             </div>
         </section>
