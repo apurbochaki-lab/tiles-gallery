@@ -1,12 +1,13 @@
-import { Button, Card } from "@heroui/react";
+import { CircleFill } from "@gravity-ui/icons";
+import { Button, Card, Chip } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 
 const TilesCard = ({ tile }) => {
-    const { title, category, currency, description, dimensions, image, inStock, material, price } = tile;
+    const { id, title, description, image, category } = tile;
     // console.log(tile)
     return (
-        <Card className="mt-5 m-5 space-y-2 shadow-md">
+        <Card className="space-y-2 shadow-md">
             <div className="relative w-full aspect-square">
                 <Image
                     src={image}
@@ -17,9 +18,13 @@ const TilesCard = ({ tile }) => {
                 >
                 </Image>
             </div>
+            <Chip className="absolute top-6 right-6 bg-blue-200">
+                <CircleFill width={6} />
+                <Chip.Label className="font-semibold">{category[0].toUpperCase() + category.slice(1)}</Chip.Label>
+            </Chip>
             <h2 className="text-xl font-bold">{title}</h2>
             <p className="line-clamp-2 text-muted font-medium">{description}</p>
-            <Link href={"/view-details"}>
+            <Link href={`/tiles-details/${id}`}>
                 <Button variant="outline" className="w-full border border-gray-500/30 shadow-sm font-semibold text-[16px]">View Details</Button>
             </Link>
         </Card>
