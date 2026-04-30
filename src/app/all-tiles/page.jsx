@@ -13,12 +13,6 @@ const AllTilesPage = async () => {
 
                 <SearchFeatures tiles={tiles}></SearchFeatures>
             </div>
-
-            {/* <div className="m-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                {
-                    tiles.map(tile => <TilesCard key={tile.id} tile={tile}></TilesCard>)
-                }
-            </div> */}
         </div>
     );
 };
