@@ -35,7 +35,9 @@ const Navbar = () => {
                         alt="Brand Logo">
                     </Image>
                 </div>
-                <a className="btn btn-ghost text-2xl text-shadow-accent">TILE <span className="text-[#BD9A67]">VISTA</span></a>
+                <Link href={"/"}>
+                    <h2 className="btn btn-ghost text-2xl text-shadow-accent">TILE <span className="text-[#BD9A67]">VISTA</span></h2>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const TilesCard = ({ tile }) => {
     const { id, title, description, image, category } = tile;
-    // console.log(tile)
+    // console.log("TilesCard : server/client")
     return (
         <Card className="space-y-2 shadow-md">
             <div className="relative w-full aspect-square">
