@@ -1,8 +1,20 @@
+import { TilesData } from "@/lib/dataFetch";
+import TilesCard from "../shared/TilesCard";
 
-const FeaturedTiles = () => {
+const FeaturedTiles = async () => {
+
+    const tiles = await TilesData()
+    // console.log(tiles)
+
     return (
         <section className="max-w-7xl mx-auto">
             <h2 className="mt-10 text-4xl font-bold text-center">Featured Tiles</h2>
+
+            <div>
+                {
+                    tiles.slice(0, 4).map(tile => <TilesCard key={tile.id} tile={tile}></TilesCard>)
+                }
+            </div>
         </section>
     );
 };
