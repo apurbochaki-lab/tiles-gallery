@@ -1,5 +1,11 @@
+import Banner from "@/components/homepage/Banner";
+import FeaturedTiles from "@/components/homepage/FeaturedTiles";
+
 export default function Home() {
   return (
-    <div className="text-3xl font-bold text-center py-10">Home Page</div>
+    <div className=" py-10">
+      <Banner></Banner>
+      <FeaturedTiles></FeaturedTiles>
+    </div>
   );
 }
