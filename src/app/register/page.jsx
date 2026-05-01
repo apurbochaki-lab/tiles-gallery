@@ -4,20 +4,40 @@ import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { useForm } from "react-hook-form";
 
+const RegisterPage = () => {
 
-const LogInPage = () => {
+    const {register, handleSubmit} = useForm()
 
-    const { register, handleSubmit } = useForm()
-
-    const handleRegisterFunc = (data) => {
+    const handleLoginFunc = (data) => {
         console.log(data)
-
+        
     }
 
     return (
         <div className="py-20">
-            <Form onSubmit={handleSubmit(handleRegisterFunc)} className="flex w-96 flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-green-100">
-                <h2 className="text-2xl font-bold text-center">Login Your Account</h2>
+            <Form onSubmit={handleSubmit(handleLoginFunc)} className="flex w-96 flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-blue-200">
+                <h2 className="text-2xl font-bold text-center">Register Your Account</h2>
+
+                <TextField
+                    isRequired
+                    name="name"
+                    type="text"
+                >
+                    <Label>Name</Label>
+                    <Input placeholder="Enter your name" 
+                    {...register("name")}/>
+                </TextField>
+
+                <TextField
+                    isRequired
+                    name="image"
+                    type="url"
+                >
+                    <Label>Image URL</Label>
+                    <Input placeholder="Enter your profile image URL" 
+                    {...register("image")}/>
+                    <FieldError />
+                </TextField>
 
                 <TextField
                     isRequired
@@ -60,7 +80,7 @@ const LogInPage = () => {
                     <FieldError />
                 </TextField>
                 <div className="flex gap-2">
-                    <Button variant="outline" className={"bg-blue-300 font-bold"} type="submit">
+                    <Button variant="outline" className={"bg-green-300 font-bold"} type="submit">
                         <Check />
                         Submit
                     </Button>
@@ -73,4 +93,4 @@ const LogInPage = () => {
     );
 };
 
-export default LogInPage;
+export default RegisterPage;

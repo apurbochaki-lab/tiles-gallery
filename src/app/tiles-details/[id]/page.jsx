@@ -16,10 +16,10 @@ const tilesDetailsPage = async ({ params }) => {
 
     return (
         <section className='bg-base-200'>
-            <div className=' max-w-7xl mx-auto'>
+            <div className='max-w-7xl mx-auto'>
 
-                <div className="hero  py-20">
-                    <div className=" hero-content flex-col lg:flex-row gap-8">
+                <div className="hero py-20">
+                    <div className="hero-content flex-col lg:flex-row gap-8">
                         <div className='relative'>
                             <Image
                                 className=' rounded-lg shadow-md border-2 border-blue-500/30'

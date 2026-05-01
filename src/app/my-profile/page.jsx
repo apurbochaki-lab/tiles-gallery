@@ -2,8 +2,8 @@ import { Card, InfoIcon } from '@heroui/react';
 import Image from 'next/image';
 import React from 'react';
 import logo from '@/assets/logo.png'
-import {Person} from '@gravity-ui/icons';
-import {Button, Input, Label, Modal, Surface, TextField} from "@heroui/react";
+import { Person, PencilToSquare } from '@gravity-ui/icons';
+import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 
 const MyProfilePage = () => {
     return (
@@ -16,7 +16,7 @@ const MyProfilePage = () => {
                 <h2 className='text-lg font-semibold text-muted'>apurbokumarchaki@gmail.com</h2>
 
                 <Modal>
-                    <Button variant="secondary" className="mx-auto"><InfoIcon></InfoIcon> Update Profile Info</Button>
+                    <Button variant="secondary" className="mx-auto font-semibold"><PencilToSquare /> Update Profile Info</Button>
                     <Modal.Backdrop>
                         <Modal.Container placement="auto">
                             <Modal.Dialog className="sm:max-w-md">
@@ -24,12 +24,11 @@ const MyProfilePage = () => {
                                 <Modal.Header>
                                     <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
                                         <Person className="size-5" />
-                                        
+
                                     </Modal.Icon>
                                     <Modal.Heading>Contact Us</Modal.Heading>
                                     <p className="mt-1.5 text-sm leading-5 text-muted">
-                                        Fill out the form below and we'll get back to you. The modal adapts automatically
-                                        when the keyboard appears on mobile.
+                                        Change your information bellow to update your profile info :
                                     </p>
                                 </Modal.Header>
                                 <Modal.Body className="p-6">
@@ -43,16 +42,17 @@ const MyProfilePage = () => {
                                                 <Label>Profile Img URL</Label>
                                                 <Input placeholder="Profile img URL" />
                                             </TextField>
-                                            
+
+                                            <Modal.Footer>
+                                                <Button slot="close" variant="secondary">
+                                                    Cancel
+                                                </Button>
+                                                <Button slot="close" type='submit'>Send Message</Button>
+                                            </Modal.Footer>
                                         </form>
                                     </Surface>
                                 </Modal.Body>
-                                <Modal.Footer>
-                                    <Button slot="close" variant="secondary">
-                                        Cancel
-                                    </Button>
-                                    <Button slot="close">Send Message</Button>
-                                </Modal.Footer>
+
                             </Modal.Dialog>
                         </Modal.Container>
                     </Modal.Backdrop>
