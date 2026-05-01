@@ -3,11 +3,11 @@ import { Button, Card, Chip } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 
-const TilesCard = ({ tile }) => {
+const TilesCard = ({ tile, className }) => {
     const { id, title, description, image, category } = tile;
     // console.log("TilesCard : server/client")
     return (
-        <Card className="space-y-2 shadow-md">
+        <Card className={`space-y-2 shadow-md border border-black/20 ${className}`}>
             <div className="relative w-full aspect-square">
                 <Image
                     src={image}

@@ -1,16 +1,34 @@
 'use client'
 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { Icon } from "@iconify/react";
+
 
 const RegisterPage = () => {
 
-    const {register, handleSubmit} = useForm()
+    const { register, handleSubmit } = useForm()
+    const router = useRouter();
 
-    const handleLoginFunc = (data) => {
+    const handleLoginFunc = async (data) => {
         console.log(data)
-        
+
+        const { data: userData, error } = await authClient.signUp.email({
+            name: data.name,
+            image: data.image,
+            email: data.email,
+            password: data.password
+        })
+
+        if (!error) {
+            toast.success("Register success!")
+            router.push("/")
+        }
     }
 
     return (
@@ -24,8 +42,8 @@ const RegisterPage = () => {
                     type="text"
                 >
                     <Label>Name</Label>
-                    <Input placeholder="Enter your name" 
-                    {...register("name")}/>
+                    <Input placeholder="Enter your name"
+                        {...register("name")} />
                 </TextField>
 
                 <TextField
@@ -34,8 +52,8 @@ const RegisterPage = () => {
                     type="url"
                 >
                     <Label>Image URL</Label>
-                    <Input placeholder="Enter your profile image URL" 
-                    {...register("image")}/>
+                    <Input placeholder="Enter your profile image URL"
+                        {...register("image")} />
                     <FieldError />
                 </TextField>
 
@@ -51,8 +69,8 @@ const RegisterPage = () => {
                     }}
                 >
                     <Label>Email</Label>
-                    <Input placeholder="Enter your email" 
-                    {...register("email")}/>
+                    <Input placeholder="Enter your email"
+                        {...register("email")} />
                     <FieldError />
                 </TextField>
                 <TextField
@@ -74,8 +92,8 @@ const RegisterPage = () => {
                     }}
                 >
                     <Label>Password</Label>
-                    <Input placeholder="Enter your password" 
-                    {...register("password")}/>
+                    <Input placeholder="Enter your password"
+                        {...register("password")} />
                     <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                     <FieldError />
                 </TextField>
@@ -87,6 +105,17 @@ const RegisterPage = () => {
                     <Button type="reset" variant="outline" className={"bg-red-100 font-bold"}>
                         Reset
                     </Button>
+                </div>
+
+                <div className="mt-3">
+                    <Button className="w-full border border-black/20 shadow-sm" variant="tertiary">
+                        <Icon icon="devicon:google" />
+                        Sign in with Google
+                    </Button>
+                </div>
+
+                <div>
+                    <h2 className="text-center text-lg font-medium text-muted">Already have an account? <Link href={"/login"} className="text-green-700 font-bold">Login</Link></h2>
                 </div>
             </Form>
         </div>

@@ -1,5 +1,4 @@
 import SearchFeatures from "@/components/all-tiles-page/SearchFeatures";
-import TilesCard from "@/components/shared/TilesCard";
 import { TilesData } from "@/lib/dataFetch";
 
 const AllTilesPage = async () => {

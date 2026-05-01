@@ -1,10 +1,25 @@
+"use client"
+
+// import dns from "node:dns/promises";
+// dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
 import Image from "next/image";
 import NavLink from "./NavLink";
 import logo from '@/assets/logo.png'
 import { Button } from "@heroui/react";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
 const Navbar = () => {
+
+    const { data: session, isPending } = authClient.useSession()
+    const user = session?.user
+    // console.log("session : ", user)
+
+    if (isPending) {
+        return <h2>Loading...</h2>
+    }
 
     const links =
         <>
@@ -44,15 +59,33 @@ const Navbar = () => {
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end flex items-center gap-3">
-                <Link href={"/login"}>
-                    <Button variant="outline" className="bg-green-200 font-bold text-[16px] shadow-md">Login</Button>
-                </Link>
+            <div className="navbar-end">
+                {!user && <div className="flex items-center gap-3">
+                    <Link href={"/login"}>
+                        <Button variant="outline" className="bg-green-200 font-bold text-[16px] shadow-md">Login</Button>
+                    </Link>
 
-                <Link href={"/register"}>
-                    <Button variant="outline" className="bg-blue-200 font-bold text-[16px] shadow-md">Register</Button>
-                </Link>
+                    <Link href={"/register"}>
+                        <Button variant="outline" className="bg-blue-200 font-bold text-[16px] shadow-md">Register</Button>
+                    </Link>
+                </div>}
+
+                {user && <div className="flex items-center gap-3">
+                    <h2 className="font-semibold text-green-700">Hello, {user?.name.split(" ")[0]}</h2>
+
+                    <Button
+                        size="sm"
+                        variant="danger"
+                        className="font-bold text-[16px] shadow-md"
+                        onClick={async () => {
+                            await authClient.signOut();
+                            redirect("/login")
+                        }}>Logout
+                    </Button>
+                </div>}
             </div>
+
+
         </div>
     );
 };

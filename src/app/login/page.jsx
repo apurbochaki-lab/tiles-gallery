@@ -1,17 +1,34 @@
 'use client'
 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { Icon } from "@iconify/react";
 
 
 const LogInPage = () => {
 
     const { register, handleSubmit } = useForm()
 
-    const handleRegisterFunc = (data) => {
+    const handleRegisterFunc = async (data) => {
         console.log(data)
 
+        const { data: userData, error } = await authClient.signIn.email({
+            email: data.email,
+            password: data.password,
+
+            callbackURL: "/"
+        })
+
+        if (!error) {
+            toast.success("Login successful!")
+        }
+        else {
+            toast.error(error.message)
+        }
     }
 
     return (
@@ -31,8 +48,8 @@ const LogInPage = () => {
                     }}
                 >
                     <Label>Email</Label>
-                    <Input placeholder="Enter your email" 
-                    {...register("email")}/>
+                    <Input placeholder="Enter your email"
+                        {...register("email")} />
                     <FieldError />
                 </TextField>
                 <TextField
@@ -54,8 +71,8 @@ const LogInPage = () => {
                     }}
                 >
                     <Label>Password</Label>
-                    <Input placeholder="Enter your password" 
-                    {...register("password")}/>
+                    <Input placeholder="Enter your password"
+                        {...register("password")} />
                     <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                     <FieldError />
                 </TextField>
@@ -68,7 +85,20 @@ const LogInPage = () => {
                         Reset
                     </Button>
                 </div>
+
+                <div className="mt-3">
+                    <Button className="w-full border border-black/20 shadow-sm" variant="tertiary">
+                        <Icon icon="devicon:google" />
+                        Sign in with Google
+                    </Button>
+                </div>
+
+                <div>
+                    <h2 className="text-center text-lg font-medium text-muted">Don&apos;t have an account? <Link href={"/register"} className="text-blue-700 font-bold">Register</Link></h2>
+                </div>
             </Form>
+
+
         </div>
     );
 };
