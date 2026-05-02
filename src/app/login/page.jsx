@@ -123,8 +123,6 @@ const LogInPage = () => {
                         <h2 className="text-center text-lg font-medium text-muted">Don&apos;t have an account? <Link href={"/register"} className="text-blue-700 font-bold">Register</Link></h2>
                     </div>
                 </Form>
-
-
             </div>
     );
 };
