@@ -1,62 +1,38 @@
-import { Card, InfoIcon } from '@heroui/react';
-import Image from 'next/image';
+"use client"
+
+import { Avatar, Button, Card } from '@heroui/react';
 import React from 'react';
-import logo from '@/assets/logo.png'
-import { Person, PencilToSquare } from '@gravity-ui/icons';
-import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import { authClient } from '@/lib/auth-client';
+import UpdateModal from '@/components/profilepage/UpdateModal';
+import { PencilToSquare } from '@gravity-ui/icons';
 
 const MyProfilePage = () => {
+
+    const { data: session, isPending } = authClient.useSession()
+    const user = session?.user
+
+    // console.log(session)
+
+
     return (
-        <div>
+        <div className='m-5'>
             <h2 className='text-2xl font-bold text-center py-5'>Profile Page</h2>
 
-            <Card className='max-w-[500px] mx-auto text-center border-2 border-blue-300/30 shadow-md'>
-                <Image src={logo} width={100} height={100} alt='logo' className='mx-auto shadow-md rounded-full'></Image>
-                <h2 className='text-lg font-semibold'>Apurbo Chaki</h2>
-                <h2 className='text-lg font-semibold text-muted'>apurbokumarchaki@gmail.com</h2>
+            <Card className=' max-w-[500px] mx-auto text-center border-2 border-blue-300/30 shadow-md'>
+                <Avatar size="lg" className='w-25 h-25 mx-auto'>
+                    <Avatar.Image
+                        alt="Large Avatar"
+                        src={user?.image}
+                        width={500}
+                        height={500}
+                        referrerPolicy='no-referrer'
+                    />
+                    <Avatar.Fallback className='text-2xl font-bold bg-blue-200'>{user?.name.split(" ")[0]}</Avatar.Fallback>
+                </Avatar>
+                <h2 className='text-lg font-semibold'>{user?.name}</h2>
+                <h2 className='text-lg font-semibold text-muted'>{user?.email}</h2>
 
-                <Modal>
-                    <Button variant="secondary" className="mx-auto font-semibold"><PencilToSquare /> Update Profile Info</Button>
-                    <Modal.Backdrop>
-                        <Modal.Container placement="auto">
-                            <Modal.Dialog className="sm:max-w-md">
-                                <Modal.CloseTrigger />
-                                <Modal.Header>
-                                    <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
-                                        <Person className="size-5" />
-
-                                    </Modal.Icon>
-                                    <Modal.Heading>Contact Us</Modal.Heading>
-                                    <p className="mt-1.5 text-sm leading-5 text-muted">
-                                        Change your information bellow to update your profile info :
-                                    </p>
-                                </Modal.Header>
-                                <Modal.Body className="p-6">
-                                    <Surface variant="default">
-                                        <form className="flex flex-col gap-4">
-                                            <TextField className="w-full" name="name" type="text">
-                                                <Label>Name</Label>
-                                                <Input placeholder="Enter your name" />
-                                            </TextField>
-                                            <TextField className="w-full" name="email" type="email">
-                                                <Label>Profile Img URL</Label>
-                                                <Input placeholder="Profile img URL" />
-                                            </TextField>
-
-                                            <Modal.Footer>
-                                                <Button slot="close" variant="secondary">
-                                                    Cancel
-                                                </Button>
-                                                <Button slot="close" type='submit'>Send Message</Button>
-                                            </Modal.Footer>
-                                        </form>
-                                    </Surface>
-                                </Modal.Body>
-
-                            </Modal.Dialog>
-                        </Modal.Container>
-                    </Modal.Backdrop>
-                </Modal>
+                <UpdateModal></UpdateModal>
             </Card>
         </div>
     );

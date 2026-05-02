@@ -15,11 +15,6 @@ const Navbar = () => {
 
     const { data: session, isPending } = authClient.useSession()
     const user = session?.user
-    // console.log("session : ", user)
-
-    if (isPending) {
-        return <h2>Loading...</h2>
-    }
 
     const links =
         <>
@@ -60,18 +55,22 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {!user && <div className="flex items-center gap-3">
-                    <Link href={"/login"}>
-                        <Button variant="outline" className="bg-green-200 font-bold text-[16px] shadow-md">Login</Button>
-                    </Link>
+                {isPending
+                    ? <span className="loading loading-xl loading-spinner text-info mr-10"></span>
 
-                    <Link href={"/register"}>
-                        <Button variant="outline" className="bg-blue-200 font-bold text-[16px] shadow-md">Register</Button>
-                    </Link>
-                </div>}
+                    : !user && <div className="flex items-center gap-3">
+                        <Link href={"/login"}>
+                            <Button variant="outline" className="bg-green-200 font-bold text-[16px] shadow-md">Login</Button>
+                        </Link>
+
+                        <Link href={"/register"}>
+                            <Button variant="outline" className="bg-blue-200 font-bold text-[16px] shadow-md">Register</Button>
+                        </Link>
+                    </div>}
 
                 {user && <div className="flex items-center gap-3">
-                    <h2 className="font-semibold text-green-700">Hello, {user?.name.split(" ")[0]}</h2>
+                    <h2
+                        style={{ textTransform: "capitalize" }} className="font-semibold text-green-700">Hello, {user?.name.split(" ")[0]}</h2>
 
                     <Button
                         size="sm"

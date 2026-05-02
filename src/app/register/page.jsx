@@ -1,16 +1,19 @@
 'use client'
 
 import { authClient } from "@/lib/auth-client";
-import { Check } from "@gravity-ui/icons";
+import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Icon } from "@iconify/react";
+import { useState } from "react";
 
 
 const RegisterPage = () => {
+    const [showPass, setShowPass] = useState(false)
+
 
     const { register, handleSubmit } = useForm()
     const router = useRouter();
@@ -31,9 +34,16 @@ const RegisterPage = () => {
         }
     }
 
+    // Google Authentication
+    const handleGoogle = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google"
+        })
+    }
+
     return (
-        <div className="py-20">
-            <Form onSubmit={handleSubmit(handleLoginFunc)} className="flex w-96 flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-blue-200">
+        <div className="py-20 m-5">
+            <Form onSubmit={handleSubmit(handleLoginFunc)} className="flex flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-blue-200">
                 <h2 className="text-2xl font-bold text-center">Register Your Account</h2>
 
                 <TextField
@@ -74,10 +84,11 @@ const RegisterPage = () => {
                     <FieldError />
                 </TextField>
                 <TextField
+                className={"relative"}
                     isRequired
                     minLength={8}
                     name="password"
-                    type="password"
+                    type={showPass ? "text" : "password"}
                     validate={(value) => {
                         if (value.length < 8) {
                             return "Password must be at least 8 characters";
@@ -93,7 +104,20 @@ const RegisterPage = () => {
                 >
                     <Label>Password</Label>
                     <Input placeholder="Enter your password"
-                        {...register("password")} />
+                        {...register("password")}
+                    />
+
+                    <span>
+                        <button
+                            onClick={() => setShowPass(!showPass)}
+                            className="cursor-pointer">
+                            {showPass
+                                ? <EyeSlash className="absolute top-[33px] right-3"></EyeSlash>
+                                : <Eye className="absolute top-[33px] right-3"></Eye>
+                            }
+                        </button>
+                    </span>
+
                     <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                     <FieldError />
                 </TextField>
@@ -108,7 +132,9 @@ const RegisterPage = () => {
                 </div>
 
                 <div className="mt-3">
-                    <Button className="w-full border border-black/20 shadow-sm" variant="tertiary">
+                    <Button
+                        onClick={handleGoogle}
+                        className="w-full border border-black/20 shadow-sm" variant="tertiary">
                         <Icon icon="devicon:google" />
                         Sign in with Google
                     </Button>
