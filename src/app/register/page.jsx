@@ -43,7 +43,7 @@ const RegisterPage = () => {
 
     return (
         <div className="py-20 m-5">
-            <Form onSubmit={handleSubmit(handleLoginFunc)} className="flex flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-blue-200">
+            <Form onSubmit={handleSubmit(handleLoginFunc)} className="max-w-100 flex flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-blue-200">
                 <h2 className="text-2xl font-bold text-center">Register Your Account</h2>
 
                 <TextField

@@ -12,7 +12,7 @@ import { useState } from "react";
 
 const LogInPage = () => {
     const [showPass, setShowPass] = useState(false)
-    console.log(showPass)
+    // console.log(showPass)
 
     const { register, handleSubmit } = useForm()
 
@@ -43,7 +43,7 @@ const LogInPage = () => {
 
     return (
             <div className="py-20 m-5">
-                <Form onSubmit={handleSubmit(handleRegisterFunc)} className="flex flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-green-100">
+                <Form onSubmit={handleSubmit(handleRegisterFunc)} className="flex max-w-100 flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-green-100">
                     <h2 className="text-2xl font-bold text-center">Login Your Account</h2>
 
                     <TextField
