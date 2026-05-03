@@ -15,8 +15,8 @@ const SearchFeatures = ({ tiles }) => {
     // console.log(filteredTiles)
 
     return (
-        <div className="m-5 max-w-7xl mx-auto">
-            <div className="">
+        <div className="m-5 max-w-7xl mx-auto mt-10 mb-20">
+            <div className="mb-10">
                 <SearchField
                     className="max-w-70 mx-auto"
                     isRequired

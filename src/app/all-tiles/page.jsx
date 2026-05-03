@@ -7,8 +7,7 @@ const AllTilesPage = async () => {
     return (
         <div className='max-w-7xl mx-auto'>
             <div className="">
-                {/* <div></div> */}
-                <h2 className="text-3xl font-bold text-center mt-7">All Tiles</h2>
+                <h2 className="text-4xl md:text-5xl font-bold text-center mt-7">All Tiles</h2>
 
                 <SearchFeatures tiles={tiles}></SearchFeatures>
             </div>
