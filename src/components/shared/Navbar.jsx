@@ -1,8 +1,5 @@
 "use client"
 
-// import dns from "node:dns/promises";
-// dns.setServers(["1.1.1.1", "8.8.8.8"]);
-
 import Image from "next/image";
 import NavLink from "./NavLink";
 import logo from '@/assets/logo.png'
