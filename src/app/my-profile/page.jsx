@@ -1,6 +1,6 @@
 "use client"
 
-import { Avatar, Button, Card } from '@heroui/react';
+import { Avatar, Card } from '@heroui/react';
 import React from 'react';
 import { authClient } from '@/lib/auth-client';
 import UpdateModal from '@/components/profilepage/UpdateModal';
@@ -11,7 +11,7 @@ const MyProfilePage = () => {
     const user = session?.user
 
     return (
-        <div className='m-5'>
+        <div className='m-5 mb-50'>
             <h2 className='text-2xl font-bold text-center py-5'>Profile Page</h2>
 
             <Card className=' max-w-[500px] mx-auto text-center border-2 border-blue-300/30 shadow-md'>

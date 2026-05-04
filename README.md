@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🧱 Tiles Gallery
 
-## Getting Started
+A modern and responsive web application to showcase a beautiful collection of tiles. Users can explore, search, and view detailed information about different tiles, along with authentication and profile management features.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📖 Purpose
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The goal of this project is to create an elegant **Tile Gallery Platform** where users can:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* Browse a wide variety of tiles
+* View detailed information about each tile
+* Authenticate securely (Login/Register/Google)
+* Manage their personal profile
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🌐 Live URL
 
-To learn more about Next.js, take a look at the following resources:
+🔗 https://your-live-site-url.com
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<!-- Replace with your deployed link (Vercel / Render) -->
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ✨ Key Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* 🎨 Fully responsive design (Mobile, Tablet, Desktop)
+* 🧱 Dynamic Tile Gallery with search functionality
+* 🌟 Featured Tiles section (Top 4 tiles from server)
+* 🔍 Single Tile Details Page with rich information
+* 🔐 Authentication System (Email/Password + Google Login)
+* 👤 User Profile with update functionality
+* 🚦 Public & Private route protection
+* 📡 JSON Server integration for data fetching
+* ⚡ Toast notifications for success & error handling
+* 🧩 Unique and modern UI design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🧭 Pages & Routes
+
+### 🌍 Public Routes
+
+* `/` → Home
+* `/all-tiles` → All Tiles Gallery
+* `/login` → Login Page
+* `/register` → Registration Page
+
+### 🔒 Private Routes
+
+* `/tile/[id]` → Tile Details Page
+* `/my-profile` → User Profile Page
+
+---
+
+## 🧱 Layout Overview
+
+* 🧭 **Navbar**
+
+  * Logo (Home navigation)
+  * Links (Home, All Tiles, My Profile)
+  * Login / Logout system
+
+* 🦶 **Footer**
+
+  * Social media links
+  * Contact section
+
+---
+
+## 🔐 Authentication
+
+* Email & Password | Login/Register
+* Google Authentication
+
+---
+
+## 🛠️ Technologies Used
+
+* ⚛️ Next.js (App Router)
+* 🗄️ MongoDB
+* 🔐 BetterAuth (Authentication System)
+* 💎 HeroUI (UI Components)
+
+---
+
+## 📦 NPM Packages Used
+
+* 🍞 react-toastify
+* 🎯 @gravity-ui/icons
+* 💎 @heroui/react
+* 🔗 @iconify/react
+* 🗄️ mongodb
+
+---
+
+## 🚀 Additional Features
+
+* ⏳ Loader during data fetching
+* ❌ Custom Not Found Page
+* 🔁 Route-safe reload handling (SPA behavior)
+* 🌈 Clean & user-friendly UI
+
+---
+
+## 👨‍💻 Author
+
+**Your Name**
+🔗 GitHub: https://github.com/your-username
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub!
+
+---
