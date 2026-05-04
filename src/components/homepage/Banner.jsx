@@ -13,7 +13,7 @@ const Banner = () => {
     return (
         <section className="max-w-7xl mx-auto">
             {/* Banner */}
-            <Swiper className='mt-10'
+            <Swiper className='mt-10 shadow-md border-2 border-gray-300/40 rounded-xl'
                 navigation={true}
                 pagination={true}
                 autoplay={true}

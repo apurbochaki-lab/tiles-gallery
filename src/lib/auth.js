@@ -6,7 +6,10 @@ const client = new MongoClient(process.env.BETTER_AUTH_URI);
 const db = client.db("tiles-gallery");
 
 export const auth = betterAuth({
-    emailAndPassword: { enabled: true },
+    emailAndPassword: {
+        enabled: true,
+        autoSignIn: false
+    },
     database: mongodbAdapter(db, { client }),
 
     // Social Provider

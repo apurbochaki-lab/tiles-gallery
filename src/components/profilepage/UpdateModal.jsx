@@ -51,7 +51,7 @@ const UpdateModal = () => {
                                         <Button slot="close" variant="secondary">
                                             Cancel
                                         </Button>
-                                        <Button slot="close" variant="secondary" type='submit'>Send Message</Button>
+                                        <Button slot="close" variant="secondary" type='submit'>Update Info</Button>
                                     </Modal.Footer>
                                 </form>
                             </Surface>

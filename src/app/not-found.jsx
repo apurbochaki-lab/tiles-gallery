@@ -18,7 +18,7 @@ const NotFoundPage = () => {
 
                 {/* Title */}
                 <h1 className="text-3xl font-bold tracking-wide">
-                    Data Not Found!
+                    Page Not Found!
                 </h1>
 
                 {/* Subtitle */}

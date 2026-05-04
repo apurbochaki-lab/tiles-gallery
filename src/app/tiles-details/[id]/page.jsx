@@ -19,7 +19,7 @@ const tilesDetailsPage = async ({ params }) => {
             <div className='max-w-7xl mx-auto'>
 
                 <div className="hero py-20">
-                    <div className="hero-content flex-col lg:flex-row gap-8">
+                    <div className="flex flex-col items-center justify-center lg:flex-row gap-8">
                         <div className='relative'>
                             <Image
                                 className=' rounded-lg shadow-md border-2 border-blue-500/30'

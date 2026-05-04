@@ -4,7 +4,7 @@ import MarqueeText from "@/components/homepage/Marquee";
 
 export default function Home() {
   return (
-    <div className=" py-10">
+    <div className="py-10 bg-sky-50">
       <Banner></Banner>
       <MarqueeText></MarqueeText>
       <FeaturedTiles></FeaturedTiles>

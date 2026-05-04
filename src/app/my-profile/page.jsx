@@ -4,15 +4,11 @@ import { Avatar, Button, Card } from '@heroui/react';
 import React from 'react';
 import { authClient } from '@/lib/auth-client';
 import UpdateModal from '@/components/profilepage/UpdateModal';
-import { PencilToSquare } from '@gravity-ui/icons';
 
 const MyProfilePage = () => {
 
-    const { data: session, isPending } = authClient.useSession()
+    const { data: session } = authClient.useSession()
     const user = session?.user
-
-    // console.log(session)
-
 
     return (
         <div className='m-5'>

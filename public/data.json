@@ -178,5 +178,17 @@
         "dimensions": "120x120 cm",
         "material": "Porcelain",
         "inStock": true
+    },
+    {
+        "id": "tile_016",
+        "title": "Ocean Green Gloss Tile",
+        "description": "A vibrant ocean green tile with a glossy finish that brings freshness and energy into any space. Its reflective surface enhances lighting while the rich green tone adds a natural and calming vibe. Ideal for bathrooms, feature walls, and modern interiors.",
+        "image": "https://d3hdqda5v86kzc.cloudfront.net/media/products/tiles/images/series/__sized__/glazehomogeneous/ambience/high-res/GLAZEHOMOGENEOUSAmbience-crop-c0-5__0-5-1600x775-70.jpg",
+        "category": "ceramic",
+        "price": 47.50,
+        "currency": "USD",
+        "dimensions": "60x60 cm",
+        "material": "Ceramic",
+        "inStock": true
     }
 ]

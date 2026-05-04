@@ -1,6 +1,10 @@
 import SearchFeatures from "@/components/all-tiles-page/SearchFeatures";
 import { TilesData } from "@/lib/dataFetch";
 
+export const metadata = {
+    title: "Tile Vista | All Tiles"
+};
+
 const AllTilesPage = async () => {
     const tiles = await TilesData()
 

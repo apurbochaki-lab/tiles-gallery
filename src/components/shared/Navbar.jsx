@@ -17,7 +17,7 @@ const Navbar = () => {
         <>
             <li><NavLink href={"/"} className="font-bold text-lg">Home</NavLink></li>
             <li><NavLink href={"/all-tiles"} className="font-bold text-lg">All Tiles</NavLink></li>
-            <li><NavLink href={"/my-profile"} className="font-bold text-lg">My Profile</NavLink></li>
+            {user && <li><NavLink href={"/my-profile"} className="font-bold text-lg">My Profile</NavLink></li>}
         </>
 
     return (

@@ -18,7 +18,7 @@ const RegisterPage = () => {
     const { register, handleSubmit } = useForm()
     const router = useRouter();
 
-    const handleLoginFunc = async (data) => {
+    const handleRegisterFunc = async (data) => {
         console.log(data)
 
         const { data: userData, error } = await authClient.signUp.email({
@@ -30,7 +30,7 @@ const RegisterPage = () => {
 
         if (!error) {
             toast.success("Register success!")
-            router.push("/")
+            router.push("/login")
         }
     }
 
@@ -43,7 +43,7 @@ const RegisterPage = () => {
 
     return (
         <div className="py-20 m-5">
-            <Form onSubmit={handleSubmit(handleLoginFunc)} className="max-w-100 flex flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-blue-200">
+            <Form onSubmit={handleSubmit(handleRegisterFunc)} className="max-w-100 flex flex-col gap-4 mx-auto p-5 rounded-lg shadow-md border-2 border-black/10 bg-blue-200">
                 <h2 className="text-2xl font-bold text-center">Register Your Account</h2>
 
                 <TextField
@@ -110,7 +110,8 @@ const RegisterPage = () => {
                     <span>
                         <button
                             onClick={() => setShowPass(!showPass)}
-                            className="cursor-pointer">
+                            className="cursor-pointer"
+                            type="button">
                             {showPass
                                 ? <EyeSlash className="absolute top-[33px] right-3"></EyeSlash>
                                 : <Eye className="absolute top-[33px] right-3"></Eye>
@@ -124,10 +125,10 @@ const RegisterPage = () => {
                 <div className="flex gap-2">
                     <Button variant="outline" className={"bg-green-300 font-bold"} type="submit">
                         <Check />
-                        Submit
+                        Register
                     </Button>
                     <Button type="reset" variant="outline" className={"bg-red-100 font-bold"}>
-                        Reset
+                        Clear
                     </Button>
                 </div>
 
