@@ -17,7 +17,7 @@ The goal of this project is to create an elegant **Tile Gallery Platform** where
 
 ## 🌐 Live URL
 
-🔗 https://tiles-gallery-rust.vercel.app/
+🔗 **Live Demo:** [TilesGallery Live](https://tiles-gallery-rust.vercel.app)
 
 <!-- Replace with your deployed link (Vercel / Render) -->
 
